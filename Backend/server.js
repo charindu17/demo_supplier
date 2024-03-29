@@ -3,7 +3,7 @@ const express  = require("express"); //declaring variables and importing package
 const mongoose = require("mongoose");
 const bodyParser=require("body-parser");
 const cors = require("cors");
-const dotenv = require("dotenv");
+require("dotenv").config();
 
 const app = express();
 
@@ -27,6 +27,10 @@ const connection = mongoose.connection;
 connection.once("open",()=> {
     console.log("MongoDB database connected successfully!");
 });
+//access Student.js adn import the Student .js file
+const supplierRouter = require("./routes/supplier.js");
+
+app.use("/supplier",supplierRouter);
 //run in the port
 app.listen(PORT , () => {
     console.log(`Server is running on port ${PORT}`);
