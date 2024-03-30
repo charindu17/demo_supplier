@@ -32,5 +32,5 @@ price :{
     required :true
 },
 })
-const Student =  mongoose.model("Supplier",supplierSchema);
+const Supplier =  mongoose.model("Supplier",supplierSchema);
 module.exports = Supplier;
