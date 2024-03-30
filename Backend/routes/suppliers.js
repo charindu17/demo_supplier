@@ -35,4 +35,31 @@ res.json(suppliers)
         console.log(err)
     })
 })
+
+//first find the supplier that you want to update without affecting others
+//when you use asynchronous performance gets higher 
+router.route("/update/:id").put(async(req,res)=>{
+   let userid = req.params.id;
+   //destructor to get all constant variables of the supplier profiles
+  
+   const {suppliername,supplieremail,supplierid,date,supplierphone,equipment,price}=req.body;
+   const updateSupplier ={
+    suppliername,
+    supplieremail,
+    supplierid,
+    supplierphone,
+    equipment,
+    date,
+    price
+   }
+   const update = await Supplier.findByIdAndUpdate(userid,updateSupplier).then(()=>{
+    res.status(200).send({status : "User updated", user :update})
+   }).catch((err)=>{
+console.log(err);
+res.status(500).send({status : "Error with updating data", error : err.message});
+   })
+   
+})
+
+
 module.exports = router;
