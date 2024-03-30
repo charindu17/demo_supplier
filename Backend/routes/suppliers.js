@@ -60,6 +60,23 @@ res.status(500).send({status : "Error with updating data", error : err.message})
    })
    
 })
-
-
+router.route("/delete/:id").delete(async(req,res)=>{
+ let userid = req.params.id;
+ await Supplier.findByIdAndDelete(userid).then(()=>{
+    res.status(200).send({ststus : "user deleted"});
+ }).catch((err)=>{
+    console.log(err.message);
+    res.status(500).send({status:"error with delete user", error: err.message});
+ })  
+})
+//find details of one user only
+router.route("/get/:id").get(async(req,res)=>{
+    let userid =req.params.id;
+    await Supplier.findById(userid).then(()=>{
+        response.status(200).send({status:"user Fetched",user :user})
+    }).catch(()=>{
+        console.log(err.message);
+        res.status(500).send({status:"Error with get user", error: err.message});
+    })
+})
 module.exports = router;
