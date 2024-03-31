@@ -17,10 +17,10 @@ app.use(bodyParser.json());
 const URL = process.env.MONGODB_URL; //access url
 
 mongoose.connect(URL, {
-    useCreateIndex : true,
+   // useCreateIndex : true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify : false,
+    //useFindAndModify : true,
     
   });
 //opening a function using arrows
@@ -32,7 +32,6 @@ connection.once("open",()=> {
 const supplierRouter = require("./routes/suppliers.js");
 
 //when you call a url using backend
-
 app.use("/supplier",supplierRouter);
 //run in the port
 app.listen(PORT , () => {
