@@ -14,7 +14,7 @@ function Header(){
         <a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">Add Supplier</a>
+        <a className="nav-link" href="/add">Add Supplier</a>
       </li>
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
